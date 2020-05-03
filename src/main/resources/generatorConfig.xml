@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="wxshop" targetRuntime="MyBatis3">
+        <!--给生成的mapper.java添加@Mapper注解，用以直接注入Mapper-->
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/wxshop?useSSL=false&amp;allowPublicKeyRetrieval=true"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!--强制使用十进制-->
+        <!--<javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>-->
+
+        <!--根据数据库配置自动生成JAVA对应的类到指定位置-->
+        <javaModelGenerator targetPackage="com.rojay.wxshop.generate" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="db.mybatis" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.rojay.wxshop.generate" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--&lt;!&ndash;schema 数据库的名字&ndash;&gt;
+        <table schema="wxshop" tableName="USER" domainObjectName="User">
+            &lt;!&ndash;是否将数据库的名字和Java类的名字一一对应起来，因为Java要使用驼峰形式
+            ，所以此处为false即可&ndash;&gt;
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
+            &lt;!&ndash;将数据表中的头像列要覆盖为驼峰形式的命名&ndash;&gt;
+            <columnOverride column="AVATAR_URL" property="avatarUrl"/>
+            &lt;!&ndash;忽略的列&ndash;&gt;
+            &lt;!&ndash;<ignoreColumn column="FRED"/>&ndash;&gt;
+            <columnOverride column="CREATED_AT" property="createdAt"/>
+            <columnOverride column="UPDATED_AT" property="updatedAt"/>
+        </table>-->
+
+        <table schema="wxshop" tableName="USER" domainObjectName="User" >
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="wxshop" tableName="SHOP" domainObjectName="Shop" >
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="wxshop" tableName="GOODS" domainObjectName="Goods" >
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="wxshop" tableName="ORDER" domainObjectName="Order" >
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="wxshop" tableName="SHOPPING_CART" domainObjectName="ShoppingCart" >
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
+        </table>
+
+
+
+    </context>
+</generatorConfiguration>
